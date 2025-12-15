@@ -7,6 +7,9 @@
       ./hardware-configuration.nix
     ];
 
+  # Agenix secrets
+  age.secrets.test-secret.file = ../../secrets/test-secret.age;
+
   # Bootloader.
   boot.loader.grub.enable = true;
   boot.loader.grub.device = "/dev/sda";
@@ -15,6 +18,11 @@
 
   # Enable vmware tools
   virtualisation.vmware.guest.enable = true;
+  # Enable the OpenSSH daemon.
+  services.openssh.enable = true;
+
+  # Agenix identity paths
+  age.identityPaths = [ "/home/mconnolly/.ssh/id_ed25519" ];
   services.xserver.videoDrivers = [ "vmware" ];
   environment.systemPackages = [ pkgs.open-vm-tools ];
 

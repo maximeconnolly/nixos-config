@@ -43,6 +43,9 @@
     firefox
     vim
    ];
+    openssh.authorizedKeys.keys = [
+      (builtins.readFile ../keys/id_ed25519.pub)
+    ];
   };
 
   # Allow unfree packages

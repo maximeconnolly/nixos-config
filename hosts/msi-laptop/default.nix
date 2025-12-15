@@ -25,6 +25,15 @@
   # Spotify and google cast firewall extensions (copied from reference)
   networking.firewall.allowedTCPPorts = [ 57621 ];
   networking.firewall.allowedUDPPorts = [ 5353 ];
+
+  # Enable the OpenSSH daemon.
+  services.openssh.enable = true;
+
+  # Agenix identity paths
+  age.identityPaths = [ "/home/mconnolly/.ssh/id_ed25519" ];
+
+  # Agenix secrets
+  age.secrets.test-secret.file = ../../secrets/test-secret.age;
   
   system.stateVersion = "25.11";
 }
