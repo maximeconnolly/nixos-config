@@ -1,5 +1,5 @@
 {
- description = "mstpierre NixOS Flake";
+ description = "mconnolly NixOS Flake";
  inputs = {
    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
    home-manager = {
@@ -25,6 +25,19 @@
              } 
          ];
      };
+      "msi-laptop" = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        modules = [
+          ./hosts/msi-laptop
+          home-manager.nixosModules.home-manager
+            {
+              home-manager.useGlobalPkgs = true;
+              home-manager.useUserPackages = true;
+              home-manager.extraSpecialArgs = inputs;
+              home-manager.users.mconnolly = import ./home;
+            } 
+        ];
+      }; 
    };
  };
 }
