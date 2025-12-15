@@ -28,6 +28,10 @@
   # Enable gnome
   services.xserver.displayManager.gdm.enable = true;
   services.xserver.desktopManager.gnome.enable = true;
+  
+  # Enable Docker
+  virtualisation.docker.enable = true;
+
   services.xserver = {
     layout = "us";
     xkbVariant = "";
@@ -38,7 +42,7 @@
   users.users.mconnolly = {
     isNormalUser = true;
     description = "Maxime Connolly";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [ "networkmanager" "wheel" "docker" ];
     packages = with pkgs; [
     firefox
     vim
