@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, helix, ... }:
+{ config, pkgs, inputs, ... }:
 
 {
   # Perform gc weekly
@@ -59,6 +59,7 @@
     wget
     curl
     tig
+    inputs.agenix.packages.${pkgs.system}.default
   ];
 
   # Some programs need SUID wrappers, can be configured further or are

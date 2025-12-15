@@ -8,14 +8,17 @@
    };
    
    nix-vscode-extensions.url = "github:nix-community/nix-vscode-extensions";
+   agenix.url = "github:ryantm/agenix";
    
  };
- outputs = {self, nixpkgs, home-manager, nix-vscode-extensions, ...} @inputs: {
+ outputs = {self, nixpkgs, home-manager, nix-vscode-extensions, agenix, ...} @inputs: {
    nixosConfigurations = {
        "nixos" = nixpkgs.lib.nixosSystem {
          system = "x86_64-linux";
+         specialArgs = { inherit inputs; };
          modules = [
            ./hosts/nixos-vm
+           agenix.nixosModules.default
            home-manager.nixosModules.home-manager
              {
                home-manager.useGlobalPkgs = true;
@@ -27,8 +30,10 @@
      };
       "msi-laptop" = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
+        specialArgs = { inherit inputs; };
         modules = [
           ./hosts/msi-laptop
+          agenix.nixosModules.default
           home-manager.nixosModules.home-manager
             {
               home-manager.useGlobalPkgs = true;
