@@ -15,6 +15,8 @@
 
   # Enable vmware tools
   virtualisation.vmware.guest.enable = true;
+  services.xserver.videoDrivers = [ "vmware" ];
+  environment.systemPackages = [ pkgs.open-vm-tools ];
 
   networking.hostName = "nixos"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
