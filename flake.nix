@@ -21,7 +21,7 @@
                home-manager.useGlobalPkgs = true;
                home-manager.useUserPackages = true;
                home-manager.extraSpecialArgs = inputs;
-               home-manager.users.mstpierre = import ./home;
+               home-manager.users.mconnolly = import ./home;
              } 
          ];
      };

@@ -6,8 +6,8 @@
   ];
 
   # TODO please change the username & home direcotry to your own
-  home.username = "mstpierre";
-  home.homeDirectory = "/home/mstpierre";
+  home.username = "mconnolly";
+  home.homeDirectory = "/home/mconnolly";
 
   # link the configuration file in current directory to the specified location in home directory
   # home.file.".config/i3/wallpaper.jpg".source = ./wallpaper.jpg;
@@ -34,8 +34,8 @@
   # basic configuration of git, please change to your own
   programs.git = {
     enable = true;
-    userName = "Maxime St-Pierre";
-    userEmail = "me@maximest-pierre.me";
+    userName = "Maxime Connolly";
+    userEmail = "maxime@maximeconnolly.ca";
   };
 
  programs.bash = {
@@ -59,7 +59,7 @@
   # You can update home Manager without changing this value. See
   # the home Manager release notes for a list of state version
   # changes in each release.
-  home.stateVersion = "23.05";
+  home.stateVersion = "25.11";
 
   # Let home Manager install and manage itself.
   programs.home-manager.enable = true;
