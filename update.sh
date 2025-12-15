@@ -6,7 +6,7 @@
 set -e
 
 echo "Updating flake inputs..."
-sudo nix flake update --commit-lock-file
+nix flake update --commit-lock-file
 
 echo "Flake updated!"
 echo "Run ./install.sh to apply the changes to your system."
