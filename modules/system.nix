@@ -42,6 +42,16 @@
     packages = with pkgs; [
     firefox
     vim
+    # Security Tools
+    metasploit
+    burpsuite
+    ghidra
+    claude-code
+    zsteg
+    steghide
+    stegsolve
+    binwalk
+    htop
    ];
     openssh.authorizedKeys.keys = [
       (builtins.readFile ../keys/id_ed25519.pub)
