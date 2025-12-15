@@ -60,6 +60,7 @@
     curl
     tig
     inputs.agenix.packages.${pkgs.system}.default
+    antigravity
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
