@@ -25,6 +25,7 @@
     zstd
     gnupg
     vscode
+    obsidian
 
     # nix related
     #
