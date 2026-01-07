@@ -3,6 +3,7 @@
     imports = 
     [
       ../../modules/system.nix
+      ../../modules/sway.nix
 
       ./hardware-configuration.nix
     ];
