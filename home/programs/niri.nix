@@ -54,6 +54,10 @@
         "Mod+Shift+9" { move-column-to-workspace 9; }
 
         "Mod+Shift+E" { quit; }
+
+        "XF86AudioRaiseVolume" allow-when-locked=true { spawn "${pkgs.wireplumber}/bin/wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.1+"; }
+        "XF86AudioLowerVolume" allow-when-locked=true { spawn "${pkgs.wireplumber}/bin/wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.1-"; }
+        "XF86AudioMute" allow-when-locked=true { spawn "${pkgs.wireplumber}/bin/wpctl" "set-mute" "@DEFAULT_AUDIO_SINK@" "toggle"; }
     }
   '';
 }

@@ -9,6 +9,7 @@
         ./common.nix
         ./niri.nix
         ./waybar.nix
+        ./wofi.nix
         ./gnome.nix
     ];
 }
