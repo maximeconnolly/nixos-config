@@ -50,5 +50,14 @@
     ethtool
     pciutils # lspci
     usbutils # lsusb
+
+    # Desktop / Wayland tools
+    wofi
+    alacritty
+    mako
+    wl-clipboard
+    xwayland-satellite
+    swaylock
+    swayidle
     ];
 }

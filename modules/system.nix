@@ -26,15 +26,31 @@
   # Configure keymap in X11
   services.xserver.enable = true;
   # Enable gnome
-  services.xserver.displayManager.gdm.enable = true;
+  services.displayManager.gdm.enable = false;
+  services.displayManager.gdm.wayland = false;
   services.xserver.desktopManager.gnome.enable = true;
+
+  services.greetd = {
+    enable = true;
+    settings = {
+      default_session = {
+        command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --cmd niri-session";
+        user = "greeter";
+      };
+    };
+  };
+
+
+
+  xdg.portal.wlr.enable = true;
+
   
   # Enable Docker
   virtualisation.docker.enable = true;
 
-  services.xserver = {
+  services.xserver.xkb = {
     layout = "us";
-    xkbVariant = "";
+    variant = "";
   };
   
 

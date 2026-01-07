@@ -1,9 +1,8 @@
 { config, pkgs, ... }:
 {
-    imports = 
-    [
+    imports = [
       ../../modules/system.nix
-      ../../modules/sway.nix
+      ../../modules/niri.nix
 
       ./hardware-configuration.nix
     ];

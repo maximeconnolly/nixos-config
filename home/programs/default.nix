@@ -7,7 +7,8 @@
         ./browsers.nix
         ./spotify.nix
         ./common.nix
-        ./sway.nix
+        ./niri.nix
+        ./waybar.nix
         ./gnome.nix
     ];
 }
