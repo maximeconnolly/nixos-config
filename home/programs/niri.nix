@@ -14,6 +14,7 @@
 
     spawn-at-startup "xwayland-satellite"
     spawn-at-startup "waybar"
+    spawn-at-startup "swaybg" "-i" "/home/mconnolly/nixos-config/media/background/wallpaper.png" "-m" "fill"
 
     spawn-at-startup "swayidle" "-w" \
                      "timeout" "300" "swaylock -f" \

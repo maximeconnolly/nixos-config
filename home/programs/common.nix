@@ -59,6 +59,7 @@
     xwayland-satellite
     swaylock
     swayidle
+    swaybg
     nerd-fonts.jetbrains-mono
     nerd-fonts.symbols-only
     font-awesome
