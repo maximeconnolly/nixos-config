@@ -5,7 +5,7 @@
     enable = true;
     style = ''
       * {
-        font-family: Roboto, Helvetica, Arial, sans-serif;
+        font-family: "JetBrainsMono Nerd Font", "Symbols Nerd Font", "Font Awesome 6 Free", Roboto, Helvetica, Arial, sans-serif;
         font-size: 13px;
       }
       

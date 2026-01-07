@@ -59,5 +59,11 @@
     xwayland-satellite
     swaylock
     swayidle
+    nerd-fonts.jetbrains-mono
+    nerd-fonts.symbols-only
+    font-awesome
     ];
+
+    fonts.fontconfig.enable = true;
+
 }
