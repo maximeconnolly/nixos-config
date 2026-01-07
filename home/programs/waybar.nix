@@ -213,6 +213,7 @@
         "cpu" = {
             format = "{usage}% ";
             tooltip = false;
+            interval = "10";
         };
 
         "memory" = {
@@ -244,7 +245,6 @@
                 default = ["" ""];
             };
             scroll-step = 1;
-            on-click = "pavucontrol";
             ignored-sinks = ["Easy Effects Sink"];
         };
 
