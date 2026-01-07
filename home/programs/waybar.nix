@@ -32,6 +32,28 @@
         padding: 0 10px;
         color: #ffffff;
       }
+
+      #pulseaudio-slider slider {
+        min-height: 0px;
+        min-width: 0px;
+        opacity: 0;
+        background-image: none;
+        border: none;
+        box-shadow: none;
+      }
+
+      #pulseaudio-slider trough {
+        min-height: 10px;
+        min-width: 80px;
+        border-radius: 5px;
+        background-color: #4c566a;
+      }
+
+      #pulseaudio-slider highlight {
+        min-width: 10px;
+        border-radius: 5px;
+        background-color: #ffffff;
+      }
     '';
     settings = {
       mainBar = {
@@ -41,7 +63,7 @@
         
         modules-left = [ "niri/workspaces" "niri/window" ];
         modules-center = [ "clock" ];
-        modules-right = [ "cpu" "memory" "battery" "tray" ];
+        modules-right = [ "cpu" "memory" "battery" "pulseaudio" "pulseaudio/slider" "tray" ];
 
         "niri/workspaces" = {
             all-outputs = true;
@@ -70,6 +92,30 @@
             format-charging = "{capacity}% ";
             format-plugged = "{capacity}% ";
             format-icons = ["" "" "" "" ""];
+        };
+
+        "pulseaudio" = {
+            format = "{volume}% {icon}";
+            format-bluetooth = "{volume}% {icon}";
+            format-muted = "";
+            format-icons = {
+                headphone = "";
+                hands-free = "";
+                headset = "";
+                phone = "";
+                portable = "";
+                car = "";
+                default = ["" ""];
+            };
+            scroll-step = 1;
+            on-click = "pavucontrol";
+            ignored-sinks = ["Easy Effects Sink"];
+        };
+
+        "pulseaudio/slider" = {
+            min = 0;
+            max = 100;
+            orientation = "horizontal";
         };
       };
     };
