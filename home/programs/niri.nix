@@ -25,9 +25,12 @@
         "Mod+Return" { spawn "alacritty"; }
         "Mod+D" { spawn "wofi" "--show" "drun"; }
         "Mod+Q" { close-window; }
+        "Mod+F" { maximize-column; }
         
         "Mod+Left" { focus-column-left; }
         "Mod+Right" { focus-column-right; }
+        "Mod+Up" { focus-workspace-up; }
+        "Mod+Down" { focus-workspace-down; }
 
         "Mod+1" { focus-workspace 1; }
         "Mod+2" { focus-workspace 2; }
