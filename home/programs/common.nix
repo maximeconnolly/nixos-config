@@ -51,6 +51,9 @@
     pciutils # lspci
     usbutils # lsusb
 
+    # discord
+    discord
+
     # Desktop / Wayland tools
     wofi
     alacritty
@@ -66,5 +69,6 @@
     ];
 
     fonts.fontconfig.enable = true;
+    
 
 }
