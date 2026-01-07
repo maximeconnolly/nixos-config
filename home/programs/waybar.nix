@@ -10,7 +10,7 @@
       }
       
       window#waybar {
-        background-color: rgba(43, 48, 59, 0.95);
+        background-color: rgba(68, 0, 107, 0.95);
         color: #ffffff;
       }
       
@@ -20,7 +20,7 @@
       }
       
       #workspaces button.focused {
-        background-color: #64727D;
+        background-color: #bf5af2;
         box-shadow: inset 0 -3px #ffffff;
       }
       
