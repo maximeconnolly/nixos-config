@@ -82,6 +82,7 @@
       #pulseaudio,
       #bluetooth,
       #custom-notification,
+      #custom-weather,
       #custom-keyboard-layout {
         padding: 0 12px;
         margin: 3px 2px;
@@ -99,6 +100,7 @@
       #pulseaudio:hover,
       #bluetooth:hover,
       #custom-notification:hover,
+      #custom-weather:hover,
       #custom-keyboard-layout:hover {
         background-color: rgba(191, 90, 242, 0.4);
         box-shadow: 0 0 10px rgba(191, 90, 242, 0.6);
@@ -123,6 +125,16 @@
       #custom-keyboard-layout:hover {
         background-color: rgba(255, 184, 108, 0.2);
         box-shadow: 0 0 10px rgba(255, 184, 108, 0.4);
+      }
+
+      #custom-weather {
+        color: #8be9fd;
+        border-color: rgba(139, 233, 253, 0.5);
+      }
+
+      #custom-weather:hover {
+        background-color: rgba(139, 233, 253, 0.2);
+        box-shadow: 0 0 10px rgba(139, 233, 253, 0.4);
       }
 
       #cpu {
@@ -233,6 +245,16 @@
         background: linear-gradient(90deg, #bf5af2 0%, #ff79c6 100%);
         box-shadow: 0 0 8px rgba(191, 90, 242, 0.6);
       }
+
+      tooltip {
+        background: rgba(43, 48, 59, 0.95);
+        border: 1px solid rgba(191, 90, 242, 0.4);
+        border-radius: 8px;
+      }
+
+      tooltip label {
+        color: #f8f8f2;
+      }
     '';
     settings = {
       mainBar = {
@@ -242,7 +264,7 @@
         
         modules-left = [ "niri/workspaces" "niri/window" ];
         modules-center = [ "clock" ];
-        modules-right = [ "custom/keyboard-layout" "cpu" "memory" "battery" "network" "bluetooth" "pulseaudio" "pulseaudio/slider" "custom/notification" "tray" ];
+        modules-right = [ "custom/weather" "custom/keyboard-layout" "cpu" "memory" "battery" "network" "bluetooth" "pulseaudio" "pulseaudio/slider" "custom/notification" "tray" ];
 
         "niri/workspaces" = {
             all-outputs = true;
@@ -251,6 +273,14 @@
         "clock" = {
             format = "{:%Y-%m-%d %H:%M}";
             tooltip-format = "<big>{:%Y %B}</big>\n<tt>{calendar}</tt>";
+        };
+
+        "custom/weather" = {
+            format = "{}";
+            tooltip = true;
+            interval = 30;
+            exec = "${pkgs.wttrbar}/bin/wttrbar --location 'Moncton'";
+            return-type = "json";
         };
 
         "cpu" = {

@@ -70,6 +70,7 @@
     grim      # Screenshot utility for Wayland
     slurp     # Select a region in Wayland
     swappy    # Screenshot annotation tool
+    wttrbar
     nerd-fonts.jetbrains-mono
     nerd-fonts.symbols-only
     font-awesome
