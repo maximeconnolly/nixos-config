@@ -52,6 +52,9 @@
     package = config.boot.kernelPackages.nvidiaPackages.stable;
   };
 
+  # Enable VMware Workstation
+  virtualisation.vmware.host.enable = true;
+
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;
 
