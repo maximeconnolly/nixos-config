@@ -78,6 +78,7 @@
       #battery,
       #cpu,
       #memory,
+      #network,
       #pulseaudio {
         padding: 0 12px;
         margin: 3px 2px;
@@ -91,6 +92,7 @@
       #battery:hover,
       #cpu:hover,
       #memory:hover,
+      #network:hover,
       #pulseaudio:hover {
         background-color: rgba(191, 90, 242, 0.4);
         box-shadow: 0 0 10px rgba(191, 90, 242, 0.6);
@@ -115,6 +117,21 @@
       #memory:hover {
         background-color: rgba(139, 233, 253, 0.2);
         box-shadow: 0 0 10px rgba(139, 233, 253, 0.4);
+      }
+
+      #network {
+        color: #bd93f9;
+        border-color: rgba(189, 147, 249, 0.5);
+      }
+
+      #network:hover {
+        background-color: rgba(189, 147, 249, 0.2);
+        box-shadow: 0 0 10px rgba(189, 147, 249, 0.4);
+      }
+
+      #network.disconnected {
+        color: #ff5555;
+        border-color: rgba(255, 85, 85, 0.5);
       }
 
       #battery {
@@ -199,7 +216,7 @@
         
         modules-left = [ "niri/workspaces" "niri/window" ];
         modules-center = [ "clock" ];
-        modules-right = [ "cpu" "memory" "battery" "pulseaudio" "pulseaudio/slider" "tray" ];
+        modules-right = [ "cpu" "memory" "battery" "network" "pulseaudio" "pulseaudio/slider" "tray" ];
 
         "niri/workspaces" = {
             all-outputs = true;
@@ -252,6 +269,17 @@
             min = 0;
             max = 100;
             orientation = "horizontal";
+        };
+
+        "network" = {
+            format-wifi = "{essid} ({signalStrength}%) ";
+            format-ethernet = "{ifname} ";
+            format-disconnected = "Disconnected ";
+            tooltip-format = "{ifname}: {ipaddr}/{cidr}";
+            tooltip-format-wifi = "{essid} ({signalStrength}%)\n{ifname}: {ipaddr}/{cidr}";
+            tooltip-format-ethernet = "{ifname}: {ipaddr}/{cidr}";
+            tooltip-format-disconnected = "Disconnected";
+            on-click = "${pkgs.networkmanager_dmenu}/bin/networkmanager_dmenu";
         };
       };
     };

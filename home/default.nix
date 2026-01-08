@@ -30,6 +30,15 @@
     "Xft.dpi" = 172;
   };
  
+  # Configure networkmanager_dmenu to use alacritty and wofi
+  xdg.configFile."networkmanager-dmenu/config.ini".text = ''
+    [dmenu]
+    dmenu_command = wofi -d --height=600 --lines=20
+    
+    [terminal]
+    terminal = alacritty
+  '';
+
 
   # basic configuration of git, please change to your own
   programs.git = {

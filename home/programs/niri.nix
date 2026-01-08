@@ -14,7 +14,7 @@
 
     spawn-at-startup "xwayland-satellite"
     spawn-at-startup "waybar"
-    spawn-at-startup "swaybg" "-i" "/home/mconnolly/nixos-config/media/background/wallpaper.png" "-m" "fill"
+    spawn-at-startup "swaybg" "-i" "/home/mconnolly/nixos-config/media/background/wallpaper2.jpg" "-m" "fill"
 
     spawn-at-startup "swayidle" "-w" \
                      "timeout" "300" "swaylock -f" \
@@ -32,6 +32,9 @@
         "Mod+Right" { focus-column-right; }
         "Mod+Up" { focus-workspace-up; }
         "Mod+Down" { focus-workspace-down; }
+
+        "Mod+Shift+Left" { move-column-left-or-to-monitor-left; }
+        "Mod+Shift+Right" { move-column-right-or-to-monitor-right; }
 
         "Mod+1" { focus-workspace 1; }
         "Mod+2" { focus-workspace 2; }
