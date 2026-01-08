@@ -58,6 +58,7 @@
     discord
 
     # Desktop / Wayland tools
+    wdisplays
     wofi
     alacritty
     # mako

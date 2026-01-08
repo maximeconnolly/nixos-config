@@ -267,7 +267,7 @@
         modules-right = [ "custom/weather" "custom/keyboard-layout" "cpu" "memory" "battery" "network" "bluetooth" "pulseaudio" "pulseaudio/slider" "custom/notification" "tray" ];
 
         "niri/workspaces" = {
-            all-outputs = true;
+            all-outputs = false;
         };
         
         "clock" = {
