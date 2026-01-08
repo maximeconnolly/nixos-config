@@ -101,6 +101,7 @@
     curl
     tig
     python3
+    libreoffice
     inputs.agenix.packages.${pkgs.system}.default
     antigravity
   ];
