@@ -81,6 +81,7 @@
       #network,
       #pulseaudio,
       #bluetooth,
+      #custom-notification,
       #custom-keyboard-layout {
         padding: 0 12px;
         margin: 3px 2px;
@@ -97,6 +98,7 @@
       #network:hover,
       #pulseaudio:hover,
       #bluetooth:hover,
+      #custom-notification:hover,
       #custom-keyboard-layout:hover {
         background-color: rgba(191, 90, 242, 0.4);
         box-shadow: 0 0 10px rgba(191, 90, 242, 0.6);
@@ -240,7 +242,7 @@
         
         modules-left = [ "niri/workspaces" "niri/window" ];
         modules-center = [ "clock" ];
-        modules-right = [ "custom/keyboard-layout" "cpu" "memory" "battery" "network" "bluetooth" "pulseaudio" "pulseaudio/slider" "tray" ];
+        modules-right = [ "custom/keyboard-layout" "cpu" "memory" "battery" "network" "bluetooth" "pulseaudio" "pulseaudio/slider" "custom/notification" "tray" ];
 
         "niri/workspaces" = {
             all-outputs = true;
@@ -322,6 +324,27 @@
             return-type = "json";
             interval = 1;
             format = "{}";
+        };
+
+        "custom/notification" = {
+            tooltip = false;
+            format = "{icon}";
+            format-icons = {
+                notification = "<span foreground='red'><sup></sup></span>";
+                none = "";
+                dnd-notification = "<span foreground='red'><sup></sup></span>";
+                dnd-none = "";
+                inhibited-notification = "<span foreground='red'><sup></sup></span>";
+                inhibited-none = "";
+                dnd-inhibited-notification = "<span foreground='red'><sup></sup></span>";
+                dnd-inhibited-none = "";
+            };
+            return-type = "json";
+            exec-if = "which swaync-client";
+            exec = "swaync-client -swb";
+            on-click = "swaync-client -t -sw";
+            on-click-right = "swaync-client -d -sw";
+            escape = true;
         };
       };
     };

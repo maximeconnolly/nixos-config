@@ -23,6 +23,7 @@
 
     spawn-at-startup "xwayland-satellite"
     spawn-at-startup "waybar"
+    spawn-at-startup "sh" "-c" "GDK_BACKEND=wayland swaync"
     spawn-at-startup "swaybg" "-i" "/home/mconnolly/nixos-config/media/background/wallpaper2.jpg" "-m" "fill"
 
     spawn-at-startup "swayidle" "-w" \

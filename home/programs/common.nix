@@ -60,7 +60,7 @@
     # Desktop / Wayland tools
     wofi
     alacritty
-    mako
+    # mako
     wl-clipboard
     xwayland-satellite
     swaylock
@@ -73,6 +73,7 @@
     nerd-fonts.jetbrains-mono
     nerd-fonts.symbols-only
     font-awesome
+    swaynotificationcenter
     ];
 
     fonts.fontconfig.enable = true;

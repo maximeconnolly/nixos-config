@@ -11,6 +11,7 @@
         ./waybar.nix
         ./wofi.nix
         ./gnome.nix
+        ./swaync.nix
         ./vscode.nix
     ];
 }
