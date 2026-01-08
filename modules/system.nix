@@ -69,7 +69,7 @@
   users.users.mconnolly = {
     isNormalUser = true;
     description = "Maxime Connolly";
-    extraGroups = [ "networkmanager" "wheel" "docker" ];
+    extraGroups = [ "networkmanager" "wheel" "docker" "dialout" ];
     packages = with pkgs; [
     firefox
     vim

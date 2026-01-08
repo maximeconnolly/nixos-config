@@ -24,32 +24,10 @@
     gawk
     zstd
     gnupg
-    (vscode-with-extensions.override {
-      vscodeExtensions = with vscode-extensions; [
-        # Nix support
-        jnoortheen.nix-ide
-        
-        # Python
-        ms-python.python
-        ms-python.vscode-pylance
-        
-        # Git
-        eamodio.gitlens
-        
-        # Formatting & Linting
-        esbenp.prettier-vscode
-        dbaeumer.vscode-eslint
-        
-        # Embedded Development
-        platformio.platformio-vscode-ide
-        ms-vscode.cpptools
-        
-        # General productivity
-        vscodevim.vim
-        ms-vscode.hexeditor
-      ];
-    })
     obsidian
+
+    # Embedded Development
+    platformio-chrootenv  # FHS environment for PlatformIO to run dynamic executables
 
     # nix related
     #
@@ -87,6 +65,9 @@
     swaylock
     swayidle
     swaybg
+    grim      # Screenshot utility for Wayland
+    slurp     # Select a region in Wayland
+    swappy    # Screenshot annotation tool
     nerd-fonts.jetbrains-mono
     nerd-fonts.symbols-only
     font-awesome
