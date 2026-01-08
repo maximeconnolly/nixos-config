@@ -66,6 +66,7 @@
     swaylock
     swayidle
     swaybg
+    blueman   # Bluetooth manager GUI
     grim      # Screenshot utility for Wayland
     slurp     # Select a region in Wayland
     swappy    # Screenshot annotation tool

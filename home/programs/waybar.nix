@@ -80,6 +80,7 @@
       #memory,
       #network,
       #pulseaudio,
+      #bluetooth,
       #custom-keyboard-layout {
         padding: 0 12px;
         margin: 3px 2px;
@@ -95,10 +96,21 @@
       #memory:hover,
       #network:hover,
       #pulseaudio:hover,
+      #bluetooth:hover,
       #custom-keyboard-layout:hover {
         background-color: rgba(191, 90, 242, 0.4);
         box-shadow: 0 0 10px rgba(191, 90, 242, 0.6);
         border-color: #bf5af2;
+      }
+
+      #bluetooth {
+        color: #8be9fd;
+        border-color: rgba(139, 233, 253, 0.5);
+      }
+
+      #bluetooth:hover {
+        background-color: rgba(139, 233, 253, 0.2);
+        box-shadow: 0 0 10px rgba(139, 233, 253, 0.4);
       }
 
       #custom-keyboard-layout {
@@ -228,7 +240,7 @@
         
         modules-left = [ "niri/workspaces" "niri/window" ];
         modules-center = [ "clock" ];
-        modules-right = [ "custom/keyboard-layout" "cpu" "memory" "battery" "network" "pulseaudio" "pulseaudio/slider" "tray" ];
+        modules-right = [ "custom/keyboard-layout" "cpu" "memory" "battery" "network" "bluetooth" "pulseaudio" "pulseaudio/slider" "tray" ];
 
         "niri/workspaces" = {
             all-outputs = true;
@@ -293,6 +305,17 @@
             tooltip-format-disconnected = "Disconnected";
             on-click = "${pkgs.networkmanager_dmenu}/bin/networkmanager_dmenu";
         };
+
+        "bluetooth" = {
+            format = " {status}";
+            format-connected = " {device_alias}";
+            format-connected-battery = " {device_alias} {device_battery_percentage}%";
+            tooltip-format = "{controller_alias}\t{controller_address}\n\n{num_connections} connected\n\n{device_enumerate}";
+            tooltip-format-connected = "{controller_alias}\t{controller_address}\n\n{num_connections} connected\n\n{device_enumerate}";
+            tooltip-format-enumerate-connected = "{device_alias}\t{device_address}";
+            on-click = "${pkgs.blueman}/bin/blueman-manager";
+        };
+
 
         "custom/keyboard-layout" = {
             exec = "/home/mconnolly/nixos-config/home/scripts/keyboard-layout.sh";
