@@ -212,7 +212,7 @@
       mainBar = {
         layer = "top";
         position = "top";
-        height = 30;
+        height = 36;
         
         modules-left = [ "niri/workspaces" "niri/window" ];
         modules-center = [ "clock" ];
