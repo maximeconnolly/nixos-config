@@ -79,7 +79,8 @@
       #cpu,
       #memory,
       #network,
-      #pulseaudio {
+      #pulseaudio,
+      #custom-keyboard-layout {
         padding: 0 12px;
         margin: 3px 2px;
         color: #ffffff;
@@ -93,10 +94,21 @@
       #cpu:hover,
       #memory:hover,
       #network:hover,
-      #pulseaudio:hover {
+      #pulseaudio:hover,
+      #custom-keyboard-layout:hover {
         background-color: rgba(191, 90, 242, 0.4);
         box-shadow: 0 0 10px rgba(191, 90, 242, 0.6);
         border-color: #bf5af2;
+      }
+
+      #custom-keyboard-layout {
+        color: #ffb86c;
+        border-color: rgba(255, 184, 108, 0.5);
+      }
+
+      #custom-keyboard-layout:hover {
+        background-color: rgba(255, 184, 108, 0.2);
+        box-shadow: 0 0 10px rgba(255, 184, 108, 0.4);
       }
 
       #cpu {
@@ -216,7 +228,7 @@
         
         modules-left = [ "niri/workspaces" "niri/window" ];
         modules-center = [ "clock" ];
-        modules-right = [ "cpu" "memory" "battery" "network" "pulseaudio" "pulseaudio/slider" "tray" ];
+        modules-right = [ "custom/keyboard-layout" "cpu" "memory" "battery" "network" "pulseaudio" "pulseaudio/slider" "tray" ];
 
         "niri/workspaces" = {
             all-outputs = true;
@@ -280,6 +292,13 @@
             tooltip-format-ethernet = "{ifname}: {ipaddr}/{cidr}";
             tooltip-format-disconnected = "Disconnected";
             on-click = "${pkgs.networkmanager_dmenu}/bin/networkmanager_dmenu";
+        };
+
+        "custom/keyboard-layout" = {
+            exec = "/home/mconnolly/nixos-config/home/scripts/keyboard-layout.sh";
+            return-type = "json";
+            interval = 1;
+            format = "{}";
         };
       };
     };

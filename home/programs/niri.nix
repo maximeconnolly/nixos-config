@@ -6,6 +6,15 @@
     //     scale 1.0
     // }
 
+    input {
+        keyboard {
+            xkb {
+                layout "us,ca"
+                variant ",multix"
+            }
+        }
+    }
+
     layout {
         gaps 16
         center-focused-column "never"
@@ -27,6 +36,7 @@
         "Mod+D" { spawn "wofi" "--show" "drun"; }
         "Mod+Q" { close-window; }
         "Mod+F" { maximize-column; }
+        "Mod+Space" { switch-layout "next"; }
         
         "Mod+Left" { focus-column-left; }
         "Mod+Right" { focus-column-right; }

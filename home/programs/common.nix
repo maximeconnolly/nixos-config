@@ -24,6 +24,7 @@
     gawk
     zstd
     gnupg
+    jq        # JSON processor (needed for scripts)
     obsidian
 
     # Embedded Development
