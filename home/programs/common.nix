@@ -1,5 +1,19 @@
-{pkgs, ...}: {
+{pkgs, ...}: 
+let
+  randomSwaylock = pkgs.writeShellScriptBin "swaylock-random" ''
+    # Directory containing lockscreen images
+    LOCKSCREEN_DIR="$HOME/nixos-config/media/lockscreen"
+    
+    # Select a random image
+    IMAGE=$(find "$LOCKSCREEN_DIR" -type f | shuf -n 1)
+    
+    # execute swaylock
+    ${pkgs.swaylock}/bin/swaylock -i "$IMAGE" -s fill "$@"
+  '';
+in
+{
     home.packages = with pkgs; [
+    randomSwaylock
     # here is some command line tools I use frequently
     # feel free to add your own or remove some of them
 

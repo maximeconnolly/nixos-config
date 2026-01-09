@@ -27,12 +27,12 @@
     spawn-at-startup "swaybg" "-i" "/home/mconnolly/nixos-config/media/background/wallpaper2.jpg" "-m" "fill"
 
     spawn-at-startup "swayidle" "-w" \
-                     "timeout" "300" "swaylock -f" \
+                     "timeout" "300" "swaylock-random -f" \
                      "timeout" "600" "niri msg action power-off-monitors" \
-                     "before-sleep" "swaylock -f"
+                     "before-sleep" "swaylock-random -f"
 
     binds {
-        "Mod+L" { spawn "swaylock"; }
+        "Mod+L" { spawn "swaylock-random"; }
         "Mod+Return" { spawn "alacritty"; }
         "Mod+D" { spawn "wofi" "--show" "drun"; }
         "Mod+Q" { close-window; }
