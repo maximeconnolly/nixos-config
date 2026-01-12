@@ -73,6 +73,8 @@ in
 
     # discord
     discord
+    # signal
+    signal-desktop
 
     # Desktop / Wayland tools
     wdisplays
