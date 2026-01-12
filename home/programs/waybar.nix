@@ -15,6 +15,8 @@
         color: #ffffff;
         border-bottom: 2px solid #bf5af2;
         box-shadow: 0 2px 10px rgba(191, 90, 242, 0.3);
+        padding-top: 3px;
+        padding-bottom: 3px;
       }
       
       #workspaces {
@@ -83,6 +85,7 @@
       #bluetooth,
       #custom-notification,
       #custom-weather,
+      #custom-weather,
       #custom-keyboard-layout {
         padding: 0 12px;
         margin: 3px 2px;
@@ -91,6 +94,7 @@
         border: 1px solid rgba(191, 90, 242, 0.5);
         border-radius: 6px;
         transition: all 0.3s ease;
+        font-size: 12px;
       }
 
       #battery:hover,
@@ -255,16 +259,34 @@
       tooltip label {
         color: #f8f8f2;
       }
+
+      #custom-playerctl {
+        padding: 0 15px;
+        margin: 3px 5px;
+        color: #f8f8f2;
+        background-color: rgba(191, 90, 242, 0.2);
+        border: 1px solid rgba(191, 90, 242, 0.5);
+        border-radius: 6px;
+        font-weight: 700;
+        transition: all 0.3s ease;
+      }
+
+      #custom-playerctl:hover {
+        background-color: rgba(191, 90, 242, 0.4);
+        box-shadow: 0 0 10px rgba(191, 90, 242, 0.6);
+        border-color: #bf5af2;
+        color: #ffffff;
+      }
     '';
     settings = {
       mainBar = {
         layer = "top";
         position = "top";
-        height = 36;
+        height = 42;
         
         modules-left = [ "niri/workspaces" "niri/window" ];
-        modules-center = [ "clock" ];
-        modules-right = [ "custom/weather" "custom/keyboard-layout" "cpu" "memory" "battery" "network" "bluetooth" "pulseaudio" "pulseaudio/slider" "custom/notification" "tray" ];
+        modules-center = [ "clock" "custom/playerctl" ];
+        modules-right = [ "pulseaudio/slider" "pulseaudio" "bluetooth" "custom/notification" ];
 
         "niri/workspaces" = {
             all-outputs = false;
@@ -274,6 +296,81 @@
             format = "{:%Y-%m-%d %H:%M}";
             tooltip-format = "<big>{:%Y %B}</big>\n<tt>{calendar}</tt>";
         };
+
+        "custom/playerctl" = {
+            format = "<span>󰎈</span> {}";
+            return-type = "json";
+            max-length = 40;
+            exec = "${pkgs.playerctl}/bin/playerctl -a metadata --format '{\"text\": \"{{artist}} - {{markup_escape(title)}}\", \"tooltip\": \"{{playerName}} : {{markup_escape(title)}}\", \"alt\": \"{{status}}\", \"class\": \"{{status}}\"}' -F";
+            on-click = "${pkgs.playerctl}/bin/playerctl play-pause";
+            on-click-right = "${pkgs.playerctl}/bin/playerctl next";
+            on-scroll-up = "${pkgs.playerctl}/bin/playerctl next";
+            on-scroll-down = "${pkgs.playerctl}/bin/playerctl previous";
+        };
+
+        "pulseaudio" = {
+            format = "{volume}% {icon}";
+            format-bluetooth = "{volume}% {icon}";
+            format-muted = "";
+            format-icons = {
+                headphone = "";
+                hands-free = "";
+                headset = "";
+                phone = "";
+                portable = "";
+                car = "";
+                default = ["" ""];
+            };
+            scroll-step = 1;
+            ignored-sinks = ["Easy Effects Sink"];
+        };
+
+        "pulseaudio/slider" = {
+            min = 0;
+            max = 100;
+            orientation = "horizontal";
+        };
+
+        "bluetooth" = {
+            format = " {status}";
+            format-connected = " {device_alias}";
+            format-connected-battery = " {device_alias} {device_battery_percentage}%";
+            tooltip-format = "{controller_alias}\t{controller_address}\n\n{num_connections} connected\n\n{device_enumerate}";
+            tooltip-format-connected = "{controller_alias}\t{controller_address}\n\n{num_connections} connected\n\n{device_enumerate}";
+            tooltip-format-enumerate-connected = "{device_alias}\t{device_address}";
+            on-click = "${pkgs.blueman}/bin/blueman-manager";
+        };
+
+        "custom/notification" = {
+            tooltip = false;
+            format = "{icon}";
+            format-icons = {
+                notification = "<span foreground='red'><sup></sup></span>";
+                none = "";
+                dnd-notification = "<span foreground='red'><sup></sup></span>";
+                dnd-none = "";
+                inhibited-notification = "<span foreground='red'><sup></sup></span>";
+                inhibited-none = "";
+                dnd-inhibited-notification = "<span foreground='red'><sup></sup></span>";
+                dnd-inhibited-none = "";
+            };
+            return-type = "json";
+            exec-if = "which swaync-client";
+            exec = "swaync-client -swb";
+            on-click = "swaync-client -t -sw";
+            on-click-right = "swaync-client -d -sw";
+            escape = true;
+        };
+      };
+
+      bottomBar = {
+        layer = "top";
+        position = "bottom";
+        height = 42;
+
+        modules-left = [ "custom/weather" "cpu" "memory" "custom/keyboard-layout" ];
+        modules-center = [ ];
+        modules-right = [ "network" "battery" "tray" ];
 
         "custom/weather" = {
             format = "{}";
@@ -304,28 +401,7 @@
             format-icons = ["" "" "" "" ""];
         };
 
-        "pulseaudio" = {
-            format = "{volume}% {icon}";
-            format-bluetooth = "{volume}% {icon}";
-            format-muted = "";
-            format-icons = {
-                headphone = "";
-                hands-free = "";
-                headset = "";
-                phone = "";
-                portable = "";
-                car = "";
-                default = ["" ""];
-            };
-            scroll-step = 1;
-            ignored-sinks = ["Easy Effects Sink"];
-        };
 
-        "pulseaudio/slider" = {
-            min = 0;
-            max = 100;
-            orientation = "horizontal";
-        };
 
         "network" = {
             format-wifi = "{essid} ({signalStrength}%) ";
@@ -338,15 +414,6 @@
             on-click = "${pkgs.networkmanager_dmenu}/bin/networkmanager_dmenu";
         };
 
-        "bluetooth" = {
-            format = " {status}";
-            format-connected = " {device_alias}";
-            format-connected-battery = " {device_alias} {device_battery_percentage}%";
-            tooltip-format = "{controller_alias}\t{controller_address}\n\n{num_connections} connected\n\n{device_enumerate}";
-            tooltip-format-connected = "{controller_alias}\t{controller_address}\n\n{num_connections} connected\n\n{device_enumerate}";
-            tooltip-format-enumerate-connected = "{device_alias}\t{device_address}";
-            on-click = "${pkgs.blueman}/bin/blueman-manager";
-        };
 
 
         "custom/keyboard-layout" = {
@@ -356,25 +423,9 @@
             format = "{}";
         };
 
-        "custom/notification" = {
-            tooltip = false;
-            format = "{icon}";
-            format-icons = {
-                notification = "<span foreground='red'><sup></sup></span>";
-                none = "";
-                dnd-notification = "<span foreground='red'><sup></sup></span>";
-                dnd-none = "";
-                inhibited-notification = "<span foreground='red'><sup></sup></span>";
-                inhibited-none = "";
-                dnd-inhibited-notification = "<span foreground='red'><sup></sup></span>";
-                dnd-inhibited-none = "";
-            };
-            return-type = "json";
-            exec-if = "which swaync-client";
-            exec = "swaync-client -swb";
-            on-click = "swaync-client -t -sw";
-            on-click-right = "swaync-client -d -sw";
-            escape = true;
+        "tray" = {
+            icon-size = 13;
+            spacing = 10;
         };
       };
     };

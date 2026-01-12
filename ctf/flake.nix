@@ -22,6 +22,7 @@
     in
     {
       devShells.${system}.default = pkgs.mkShell {
+        name = "CTF Shell";
         buildInputs = with pkgs; [
           (python3.withPackages (ps: with ps; [
             requests
@@ -33,6 +34,7 @@
         ];
         
         shellHook = ''
+          export DEV_SHELL_NAME="ctf"
           echo "CTF Environment Loaded"
           echo "Python: $(python --version)"
         '';

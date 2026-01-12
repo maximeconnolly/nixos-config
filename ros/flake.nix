@@ -21,6 +21,9 @@
               ];
             })
           ];
+          shellHook = ''
+            export DEV_SHELL_NAME="ros"
+          '';
         };
       });
   nixConfig = {

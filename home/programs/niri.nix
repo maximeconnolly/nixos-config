@@ -75,6 +75,10 @@
         "XF86AudioRaiseVolume" allow-when-locked=true { spawn "${pkgs.wireplumber}/bin/wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.1+"; }
         "XF86AudioLowerVolume" allow-when-locked=true { spawn "${pkgs.wireplumber}/bin/wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.1-"; }
         "XF86AudioMute" allow-when-locked=true { spawn "${pkgs.wireplumber}/bin/wpctl" "set-mute" "@DEFAULT_AUDIO_SINK@" "toggle"; }
+        "XF86AudioNext" allow-when-locked=true { spawn "${pkgs.playerctl}/bin/playerctl" "next"; }
+        "XF86AudioPrev" allow-when-locked=true { spawn "${pkgs.playerctl}/bin/playerctl" "previous"; }
+        "XF86AudioPlay" allow-when-locked=true { spawn "${pkgs.playerctl}/bin/playerctl" "play-pause"; }
+        "XF86AudioPause" allow-when-locked=true { spawn "${pkgs.playerctl}/bin/playerctl" "play-pause"; }
 
         // Screenshots
         "Print" { spawn "sh" "-c" "${pkgs.grim}/bin/grim - | ${pkgs.wl-clipboard}/bin/wl-copy"; }

@@ -53,10 +53,31 @@
     # TODO add your cusotm bashrc here
     bashrcExtra = ''
       export PATH="$PATH:$HOME/bin:$HOME/.local/bin:$HOME/go/bin"
+      
+      if [ -n "$DEV_SHELL_NAME" ]; then
+        # Attempt to inline the shell name after the path (\w) or inside the brackets
+        # Replace the literal ']\$' with ' ($DEV_SHELL_NAME)]\$'
+        # We use a temporary variable to perform the substitution to handle escaping cleanly
+        
+        # Check if PS1 contains ']\$' (escaping for regex/glob might be tricky in bash)
+        if [[ "$PS1" == *"]\\$"* ]]; then
+           export PS1="''${PS1/]\\$/ ($DEV_SHELL_NAME)]\\$}"
+        else
+           # Fallback: just append it after the path \w if present
+           if [[ "$PS1" == *"\\w"* ]]; then
+               export PS1="''${PS1/\\\\w/\\\\w ($DEV_SHELL_NAME)}"
+           else
+               # Final fallback: prepend
+               export PS1="($DEV_SHELL_NAME) $PS1"
+           fi
+        fi
+      fi
     '';
 
     # set some aliases, feel free to add more or remove some
     shellAliases = {
+      ctf-shell = "nix develop ~/nixos-config/ctf -c $SHELL";
+      ros-shell = "nix develop ~/nixos-config/ros -c $SHELL";
     };
   };
 
