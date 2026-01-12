@@ -78,6 +78,7 @@
     shellAliases = {
       ctf-shell = "nix develop ~/nixos-config/ctf -c $SHELL";
       ros-shell = "nix develop ~/nixos-config/ros -c $SHELL";
+      web-shell = "nix develop ~/nixos-config/dev/web -c $SHELL";
     };
   };
 
