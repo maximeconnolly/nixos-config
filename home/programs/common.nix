@@ -95,6 +95,7 @@ in
     nerd-fonts.symbols-only
     font-awesome
     swaynotificationcenter
+    brightnessctl
     ];
 
     fonts.fontconfig.enable = true;

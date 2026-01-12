@@ -80,6 +80,9 @@
         "XF86AudioPlay" allow-when-locked=true { spawn "${pkgs.playerctl}/bin/playerctl" "play-pause"; }
         "XF86AudioPause" allow-when-locked=true { spawn "${pkgs.playerctl}/bin/playerctl" "play-pause"; }
 
+        "XF86MonBrightnessUp" allow-when-locked=true { spawn "${pkgs.brightnessctl}/bin/brightnessctl" "set" "10%+"; }
+        "XF86MonBrightnessDown" allow-when-locked=true { spawn "${pkgs.brightnessctl}/bin/brightnessctl" "set" "10%-"; }
+
         // Screenshots
         "Print" { spawn "sh" "-c" "${pkgs.grim}/bin/grim - | ${pkgs.wl-clipboard}/bin/wl-copy"; }
         "Mod+Shift+S" { spawn "sh" "-c" "${pkgs.grim}/bin/grim -g \"$(${pkgs.slurp}/bin/slurp)\" - | ${pkgs.wl-clipboard}/bin/wl-copy"; }
