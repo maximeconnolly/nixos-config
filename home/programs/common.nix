@@ -4,11 +4,14 @@ let
     # Directory containing lockscreen images
     LOCKSCREEN_DIR="$HOME/nixos-config/media/lockscreen"
     
+    # Directory containing lockscreen images
+    LOCKSCREEN_DIR="$HOME/nixos-config/media/lockscreen"
+    
     # Select a random image
     IMAGE=$(find "$LOCKSCREEN_DIR" -type f | shuf -n 1)
     
     # execute swaylock
-    ${pkgs.swaylock}/bin/swaylock -i "$IMAGE" -s fill "$@"
+    ${pkgs.swaylock}/bin/swaylock -i "$IMAGE" -s center "$@"
   '';
 in
 {
