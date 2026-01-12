@@ -60,8 +60,8 @@
   };
 
   services.xserver.xkb = {
-    layout = "us";
-    variant = "";
+    layout = "us,ca,ru,jp";
+    variant = ",multix,,";
   };
   
 

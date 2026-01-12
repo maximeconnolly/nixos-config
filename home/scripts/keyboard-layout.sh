@@ -21,6 +21,12 @@ if command -v niri &> /dev/null; then
         elif [[ "$current_name" == *"Canadian"* || "$current_name" == *"CSA"* ]]; then
             text="🇨🇦 CA"
             tooltip="Layout: $current_name"
+        elif [[ "$current_name" == *"Russian"* ]]; then
+            text="🇷🇺 RU"
+            tooltip="Layout: $current_name"
+        elif [[ "$current_name" == *"Japanese"* ]]; then
+            text="🇯🇵 JP"
+            tooltip="Layout: $current_name"
         else
             text="⌨️  ${current_name:0:2}"
             tooltip="Layout: $current_name"

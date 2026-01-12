@@ -9,8 +9,8 @@
     input {
         keyboard {
             xkb {
-                layout "us,ca"
-                variant ",multix"
+                layout "us,ca,ru,jp"
+                variant ",multix,,"
             }
         }
     }
