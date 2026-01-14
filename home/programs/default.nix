@@ -13,5 +13,6 @@
         ./gnome.nix
         ./swaync.nix
         ./vscode.nix
+        ./vim.nix
     ];
 }

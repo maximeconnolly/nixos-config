@@ -72,7 +72,6 @@
     extraGroups = [ "networkmanager" "wheel" "docker" "dialout" ];
     packages = with pkgs; [
     firefox
-    vim
     # Security Tools
     metasploit
     burpsuite
