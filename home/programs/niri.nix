@@ -88,5 +88,17 @@
         "Mod+Shift+S" { spawn "sh" "-c" "${pkgs.grim}/bin/grim -g \"$(${pkgs.slurp}/bin/slurp)\" - | ${pkgs.wl-clipboard}/bin/wl-copy"; }
         "Mod+Ctrl+S" { spawn "sh" "-c" "${pkgs.grim}/bin/grim -g \"$(${pkgs.slurp}/bin/slurp)\" - | ${pkgs.swappy}/bin/swappy -f -"; }
     }
+
+    window-rule {
+        match app-id="Alacritty" is-focused=false
+        opacity 0.75
+        clip-to-geometry true
+    }
+
+    window-rule {
+        match app-id="Alacritty" is-focused=true
+        opacity 0.95
+        clip-to-geometry true
+    }
   '';
 }

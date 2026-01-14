@@ -15,5 +15,6 @@
         ./vscode.nix
         ./vim.nix
         ./spacemacs.nix
+        ./alacritty.nix
     ];
 }

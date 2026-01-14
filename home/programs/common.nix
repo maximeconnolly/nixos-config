@@ -79,7 +79,6 @@ in
     # Desktop / Wayland tools
     wdisplays
     wofi
-    alacritty
     # mako
     wl-clipboard
     xwayland-satellite
