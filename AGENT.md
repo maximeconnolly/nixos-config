@@ -27,12 +27,27 @@ This file maintains context for the AI agent working on this repository.
 ### Productivity
 - **Obsidian**: Installed via Home Manager (`home/programs/common.nix`).
 
+### Development & Editors
+- **Spacemacs**: Integrated via Home Manager (`home/programs/spacemacs.nix`).
+- **Terminal**: Alacritty (`home/programs/alacritty.nix`) - Dracula theme, dynamic opacity.
+
+### Communication
+- **Signal**: Signal Desktop installed.
+
+### Finance
+- **Tools**: Hledger, Beancount, Fava (available via Nix shells).
+
 ## Configuration Conventions
 - **System-wide Config**: `modules/system.nix`
 - **User-specific Config**: `home/` (Home Manager)
 - **Secrets Encryption**: Encrypted with user SSH key. Host keys should be added for boot decryption on physical hardware.
 
 ## Recent Changes
+- Integrated Spacemacs with Home Manager.
+- Configured Alacritty (Dracula theme, dynamic opacity).
+- Installed Signal Desktop.
+- Split Waybar into top/bottom bars.
+- Custom shell prompt for dev environments.
 - Configured Agenix for `nixos` and `msi-laptop`.
 - Added SSH public key auto-authorization.
 - Installed security tool suite.
