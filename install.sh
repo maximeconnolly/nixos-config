@@ -3,12 +3,17 @@
 # Apply NixOS Configuration
 # This script applies the current flake configuration to the running system.
 # Usage: ./install.sh [hostname]
-# Default hostname is 'nixos'
+# Default to system hostname
 
 set -e
 
-# Default to 'nixos' if no argument is provided
-HOST=${1:-nixos}
+# Default to system hostname if no argument is provided
+HOST=${1:-$(hostname)}
+
+if [ -z "$HOST" ]; then
+    echo "Error: Could not determine hostname. Please provide it as an argument."
+    exit 1
+fi
 
 echo "Applying NixOS Configuration for host: $HOST..."
 
