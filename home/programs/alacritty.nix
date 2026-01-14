@@ -5,6 +5,7 @@
     enable = true;
     settings = {
       window.opacity = 1.00;
+      window.decorations = "none";
       
       font = {
         normal = {
