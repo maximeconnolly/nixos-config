@@ -41,7 +41,7 @@ This function should only modify configuration layer settings."
      ;; auto-completion
      ;; better-defaults
      emacs-lisp
-     ;; git
+     git
      helm
      ;; lsp
      ;; markdown
@@ -53,7 +53,10 @@ This function should only modify configuration layer settings."
      ;; spell-checking
      ;; syntax-checking
      ;; version-control
-     treemacs)
+     treemacs
+     json
+     python
+     )
 
 
    ;; List of additional packages that will be installed without being wrapped
