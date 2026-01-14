@@ -14,5 +14,6 @@
         ./swaync.nix
         ./vscode.nix
         ./vim.nix
+        ./spacemacs.nix
     ];
 }
