@@ -43,6 +43,7 @@ in
     gnupg
     jq        # JSON processor (needed for scripts)
     obsidian
+    opencode  # AI coding agent for terminal
 
     # Embedded Development
     platformio-chrootenv  # FHS environment for PlatformIO to run dynamic executables
