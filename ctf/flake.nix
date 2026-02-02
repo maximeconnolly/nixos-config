@@ -19,18 +19,23 @@
         doCheck = false;
         format = "setuptools";
       };
+      
+      extra-python-packages = ps: with ps; [
+        requests
+        pwntools
+        scapy
+        pycryptodome
+        randcrack
+        unicorn
+        z3-solver
+        pip
+      ];
     in
     {
       devShells.${system}.default = pkgs.mkShell {
         name = "CTF Shell";
         buildInputs = with pkgs; [
-          (python3.withPackages (ps: with ps; [
-            requests
-            pwntools
-            scapy
-            pycryptodome
-            randcrack
-          ]))
+          (python3.withPackages extra-python-packages)
         ];
         
         shellHook = ''
@@ -40,12 +45,6 @@
         '';
       };
 
-      packages.${system}.default = pkgs.python3.withPackages (ps: with ps; [
-            requests
-            pwntools
-            scapy
-            pycryptodome
-            randcrack
-      ]);
+      packages.${system}.default = pkgs.python3.withPackages extra-python-packages;
     };
 }
