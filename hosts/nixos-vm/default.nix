@@ -3,6 +3,7 @@
     imports = 
     [
       ../../modules/system.nix
+      ../../modules/niri.nix
 
       ./hardware-configuration.nix
     ];
