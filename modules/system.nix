@@ -107,6 +107,7 @@
     libreoffice
     inputs.agenix.packages.${pkgs.system}.default
     antigravity
+    openvpn
   ];
 
   # Some programs need SUID wrappers, can be configured further or are

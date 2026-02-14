@@ -26,10 +26,7 @@
     spawn-at-startup "sh" "-c" "GDK_BACKEND=wayland swaync"
     spawn-at-startup "swaybg" "-i" "/home/mconnolly/nixos-config/media/background/wallpaper2.jpg" "-m" "fill"
 
-    spawn-at-startup "swayidle" "-w" \
-                     "timeout" "300" "swaylock-random -f" \
-                     "timeout" "600" "niri msg action power-off-monitors" \
-                     "before-sleep" "swaylock-random -f"
+    spawn-at-startup "swayidle" "-w" "timeout" "300" "swaylock-random -f" "timeout" "600" "niri msg action power-off-monitors" "before-sleep" "swaylock-random -f"
 
     binds {
         "Mod+L" { spawn "swaylock-random"; }
