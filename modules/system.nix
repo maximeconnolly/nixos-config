@@ -69,7 +69,7 @@
   users.users.mconnolly = {
     isNormalUser = true;
     description = "Maxime Connolly";
-    extraGroups = [ "networkmanager" "wheel" "docker" "dialout" ];
+    extraGroups = [ "networkmanager" "wheel" "docker" "dialout" "plugdev" ];
     packages = with pkgs; [
     firefox
     # Security Tools

@@ -15,11 +15,13 @@ let
   '';
 in
 {
+    services.gnome-keyring.enable = true;
     home.packages = with pkgs; [
     randomSwaylock
     # here is some command line tools I use frequently
     # feel free to add your own or remove some of them
 
+    gcr
     helix
     emacs
     # networking tool
@@ -30,6 +32,9 @@ in
     socat # replacement of openbsd-netcat
     ipcalc  # it is a calculator for the IPv4/v6 addresses
     nmap
+    pcsclite
+
+    gemini-cli-bin
 
     # misc
     cowsay
@@ -44,8 +49,11 @@ in
     jq        # JSON processor (needed for scripts)
     obsidian
     opencode  # AI coding agent for terminal
+    boundary
+    jadx
+    wireshark
 
-    # Embedded Development
+   # Embedded Development
     platformio-chrootenv  # FHS environment for PlatformIO to run dynamic executables
 
     # nix related

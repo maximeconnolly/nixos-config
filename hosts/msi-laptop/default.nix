@@ -33,6 +33,8 @@
     nvidiaSettings = true;
     package = config.boot.kernelPackages.nvidiaPackages.stable;
   };
+  
+  hardware.rtl-sdr.enable = true;
 
   # Enable VMware Workstation
   virtualisation.vmware.host.enable = true;
