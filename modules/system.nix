@@ -4,6 +4,12 @@
 
 { config, pkgs, inputs, ... }:
 
+let
+  unstable = import inputs.nixpkgs-unstable {
+    system = pkgs.system;
+    config.allowUnfree = true;
+  };
+in
 {
   # Perform gc weekly
   nix.gc = {
@@ -76,7 +82,7 @@
     metasploit
     burpsuite
     ghidra
-    claude-code
+    unstable.claude-code
     zsteg
     steghide
     stegsolve
@@ -106,7 +112,7 @@
     python3
     libreoffice
     inputs.agenix.packages.${pkgs.system}.default
-    antigravity
+    unstable.antigravity
     openvpn
   ];
 

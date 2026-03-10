@@ -2,16 +2,17 @@
  description = "mconnolly NixOS Flake";
  inputs = {
    nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.11";
+   nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
    home-manager = {
      url = "github:nix-community/home-manager/release-25.11";
      inputs.nixpkgs.follows = "nixpkgs";
    };
-   
+
    nix-vscode-extensions.url = "github:nix-community/nix-vscode-extensions";
    agenix.url = "github:ryantm/agenix";
-   
+
  };
- outputs = {self, nixpkgs, home-manager, nix-vscode-extensions, agenix, ...} @inputs: {
+ outputs = {self, nixpkgs, nixpkgs-unstable, home-manager, nix-vscode-extensions, agenix, ...} @inputs: {
    nixosConfigurations = {
        "nixos" = nixpkgs.lib.nixosSystem {
          system = "x86_64-linux";
