@@ -14,6 +14,8 @@
           jupyterlab
           numpy
           pandas
+          scipy
+          matplotlib
         ]);
       in
       {
